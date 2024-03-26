@@ -1,28 +1,22 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import axios from 'axios';
+import ResultsPage from './ResultPage';
+import RollNoPage from './RollNoPage';
+import { DataProvider } from './DataContext';
 
 function App() {
-  const [allUsersData, setAllUsersData] = useState([]);
-
-  const getUserData = async () => {
-    const userData = await axios.get('https://result-site.onrender.com/example/user-data');
-    setAllUsersData(userData.data)
-    console.log('userData', userData.data)
-  }
-
-  useEffect(() => {
-    getUserData()
-  }, [])
-
   return (
+    <DataProvider >
     <div className="App">
-      {
-        allUsersData.map(data => {
-          return <h3>User Name is {data.name}</h3>
-        })
-      }
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<RollNoPage />} />
+          <Route exact path="/result" element={<ResultsPage />} />
+        </Routes>
+      </Router>
     </div>
+    </DataProvider>
   );
 }
 
