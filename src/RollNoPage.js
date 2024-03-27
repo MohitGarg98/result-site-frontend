@@ -13,6 +13,7 @@ function RollNoPage() {
   
   const writeData = async () => {
 
+    /////////////// check code from line number 17 to 87 //////////////////////
     // const studentsJsonData = [
     //   {
     //     "ROLL NO": 5619286,
@@ -75,15 +76,17 @@ function RollNoPage() {
     //     "MEDIUM": "HINDI"
     // }]
 
+    // code for add documents
     // studentsJsonData.map(async data => {
     //   const result = await addDoc(collection(firestore, "students"), data)
     // })
 
+    // code for get document
     const studentsCollection = collection(firestore, "students")
     const q = query(studentsCollection, where("ROLL NO", "==", 5619203))
     const snapshot = await getDocs(q)
     snapshot.forEach(data => console.log('1', data.data()))
-
+/////////////////////////////////////////////////////////////////////////////////
 
     // this below code is for realtime database
 
