@@ -1,123 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { useNavigate } from 'react-router-dom';
-// import {getDatabase, ref, set, child, orderByChild, equalTo, get} from 'firebase/database';
+// import { useNavigate } from 'react-router-dom';
 import { getFirestore, collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import { app } from './firebase';
+import './App.css';
+import StudentResultsTable from './StudentResultsTable';
 
 function RollNoPage() {
-  const navigate = useNavigate();
   const firestore = getFirestore(app); 
-  
+  // const navigate = useNavigate();  
+
   const [rollNumber, setRollNumber] = useState('');
-  
-  const writeData = async () => {
-
-    /////////////// check code from line number 17 to 87 //////////////////////
-    // const studentsJsonData = [
-    //   {
-    //     "ROLL NO": 5619286,
-    //     "CANDIDATE NAME": "AAYUSH KUMAWAT",
-    //     "FATHER'S NAME": "MAHESH KUMAWAT",
-    //     "SCHOOL NAME": "G.C.M. SCHOOL",
-    //     "CLASS": "11 (PCM)",
-    //     "MEDIUM": "HINDI",
-    //     "SECTION - A": 8,
-    //     "SECTION - B": 4,
-    //     "SECTION - C": 2,
-    //     "SECTION - D": 2,
-    //     "SECTION - E": 12
-    //   },
-    //   {
-    //     "ROLL NO": 5619203,
-    //     "CANDIDATE NAME": "AISHWARIYA JOSHI",
-    //     "FATHER'S NAME": "AMIT JOSHI",
-    //     "SCHOOL NAME": "M.G.G.SCHOOL",
-    //     "CLASS": "11 (PCM)",
-    //     "MEDIUM": "ENGLISH",
-    //     "SECTION - A": 10,
-    //     "SECTION - B": 10,
-    //     "SECTION - C": 6,
-    //     "SECTION - D": 8,
-    //     "SECTION - E": 10
-    //   },
-    //   {
-    //     "ROLL NO": 5619129,
-    //     "CANDIDATE NAME": "AKASH GAYARI",
-    //     "FATHER'S NAME": "BHERU LAL GAYARI",
-    //     "SCHOOL NAME": "V.N.S. SCHOOL",
-    //     "CLASS": "11 (PCM)",
-    //     "MEDIUM": "HINDI",
-    //     "SECTION - A": 8,
-    //     "SECTION - B": 2,
-    //     "SECTION - C": 0,
-    //     "SECTION - D": 4,
-    //     "SECTION - E": 8
-    //   },
-    //   {
-    //     "ROLL NO": 5619023,
-    //     "CANDIDATE NAME": "ANJANA VAISHNAV",
-    //     "FATHER'S NAME": "BHERU DAS",
-    //     "SCHOOL NAME": "G.C.M. SCHOOL",
-    //     "CLASS": "11 (PCM)",
-    //     "MEDIUM": "HINDI",
-    //     "SECTION - A": 8,
-    //     "SECTION - B": 4,
-    //     "SECTION - C": 4,
-    //     "SECTION - D": 6,
-    //     "SECTION - E": 2
-    //   },
-    //   {
-    //     "ROLL NO": 5619446,
-    //     "CANDIDATE NAME": "ANKIT JATAV",
-    //     "FATHER'S NAME": "RAJU JATAV",
-    //     "SCHOOL NAME": "G.C.M. SCHOOL",
-    //     "CLASS": "11 (PCM)",
-    //     "MEDIUM": "HINDI"
-    // }]
-
-    // code for add documents
-    // studentsJsonData.map(async data => {
-    //   const result = await addDoc(collection(firestore, "students"), data)
-    // })
-
-    // code for get document
-    const studentsCollection = collection(firestore, "students")
-    const q = query(studentsCollection, where("ROLL NO", "==", 5619203))
-    const snapshot = await getDocs(q)
-    snapshot.forEach(data => console.log('1', data.data()))
-/////////////////////////////////////////////////////////////////////////////////
-
-    // this below code is for realtime database
-
-    //for insert data
-    // set(ref(db, "students"), {
-    //     id: "123",
-    //     name: "rahul",
-    //     add: "sadri"
-    //   })
-   
-    // const studentsRef = ref(db);
-    // const studentKey = "1"; // Example key
-
-    // const studentQuery = child(studentsRef, studentKey);
-
-    // get(studentQuery).then((snapshot) => {
-    //   if (snapshot.exists()) {
-    //     console.log(snapshot.val());
-    //     // Access individual properties like snapshot.val().id, snapshot.val().name, etc.
-    //   } else {
-    //     console.log("No data available for the specified roll number");
-    //   }
-    // }).catch((error) => {
-    //   console.error("Error getting data:", error);
-    // });
-
-  }
-  useEffect(() => {
-    console.log('111111111');
-    writeData()
-  }, [])
+  const[studentResult, setStudentResult] = useState('')
 
   const handleInputChange = (event) => {
     setRollNumber(event.target.value);
@@ -125,18 +18,43 @@ function RollNoPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/result?rollNo=${rollNumber}`)
+    getResultData()
+    // navigate(`/result?rollNo=${rollNumber}`)
   };
 
+  const getResultData = async () => {
+    // code for get document 5619023
+    const studentsCollection = collection(firestore, "students")
+    const q = query(studentsCollection, where("ROLL NO", "==", Number(rollNumber)))
+    const snapshot = await getDocs(q)
+    if(!snapshot.docs.length){
+      alert('you entered an incorrect roll No.')
+    } else {
+      snapshot.forEach(data => {
+        setStudentResult(data.data())
+      })
+    }
+  }
+  useEffect(() => {
+    // studentsJsonData.map(async data => {
+    //   const result = await addDoc(collection(firestore, "students"), data)
+    // })
+  }, [])
+
   return (
+   <>
+   {
+    studentResult ? 
+    <StudentResultsTable studentResult={studentResult}/> :
     <div className="App">
       <header className="App-header">
         <div className="centered-form">
-          <h1>Enter Roll Number</h1>
+          <h3>Dr. Kalam Coaching Classes</h3>
+          <h4>Scholarship Result</h4>
           <form onSubmit={handleSubmit}>
             <input
               required
-              type="text"
+              type="number"
               placeholder="Enter Roll Number"
               value={rollNumber}
               onChange={handleInputChange}
@@ -146,6 +64,8 @@ function RollNoPage() {
         </div>
       </header>
     </div>
+  }
+  </>
   );
 }
 

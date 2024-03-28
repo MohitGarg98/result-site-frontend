@@ -8,17 +8,10 @@ const students = [
 const selectedStudent = students[0];
 
 const StudentResultsPage = ({rollNo}) => {
-  const [studentResultVal, setStudentResultVal] = useState({});
-
-  useEffect(() => {
-    //fetch data through rollNo from students result table
-
-  }, [])
-
   return (
     <div>
       <h1>{rollNo}'s Results</h1>
-      <StudentResultsTable student={selectedStudent} rollNo={rollNo}/>
+      <StudentResultsTable student={selectedStudent} />
     </div>
   );
 };
