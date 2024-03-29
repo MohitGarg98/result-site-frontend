@@ -2,6 +2,9 @@ import React from "react";
 import "./StudentResultsTable.css";
 
 const StudentResultsTable = ({ studentResult }) => {
+  const convertToPDF = () => {
+    window.print(); // Opens the browser's print dialog
+  };
   const totalMarks = (Number(studentResult['SECTION - A']) ?? 0) + 
     (Number(studentResult['SECTION - B']) ?? 0) + 
     (Number(studentResult['SECTION - C']) ?? 0) +
@@ -104,6 +107,7 @@ const StudentResultsTable = ({ studentResult }) => {
           </tbody>
         </table>
       </div>
+      <button onClick={convertToPDF}>Convert to PDF</button>
     </div>
   );
 };
