@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.rollno-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: grey; */
+  text-align: center;
+}
+
+.result-page {
+  /* background: grey; */
+  padding: 50px 0px;
+}
+
+.download-link {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.download-button {
+  padding: 15px 50px;
+  border-radius: 20px;
+  background: black;
+  color: #ffff;
+  font-weight: 800;
+  font-size: larger;
+  cursor: pointer;
+  transition: all ease-in .5s;
+}
+
+.download-button:hover{
+  background: #ffff;
+  color: black;
+}

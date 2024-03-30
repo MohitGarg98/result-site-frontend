@@ -46,7 +46,7 @@ function RollNoPage() {
    {
     studentResult ? 
     <StudentResultsTable studentResult={studentResult}/> :
-    <div className="App">
+    <div className="rollno-container">
       <header className="App-header">
         <div className="centered-form">
           <h3>Dr. Kalam Coaching Classes</h3>
