@@ -157,7 +157,7 @@ const StudentResultsTable = ({ studentResult }) => {
           {studentResult?.OFFER && <div>{studentResult["OFFER"] ?? "NA"}</div>}
           <div className="ctaContainer">
             1 मई 2024 से कक्षा 10वीं एवं 12वीं के बैच शुरू कर दिए जायंगे |<br/>
-            जल्द से जल्द अपना प्रवेश सुत्तनत्तित करे | 
+            जल्द से जल्द अपना प्रवेश सूनिश्चित करे | 
           </div>
         </div>
         <div className="download-link">
