@@ -24,11 +24,12 @@ code {
 .result-page {
   /* background: grey; */
   padding: 50px 0px;
-  position: absolute;
+  /* position: absolute;
   transform: translate(50%, -50%);
   top: 50%;
-  right: 50%;
+  right: 50%; */
   width: 90%;
+  margin: 0px auto;
 }
 
 .download-link {
