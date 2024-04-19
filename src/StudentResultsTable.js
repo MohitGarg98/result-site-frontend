@@ -47,14 +47,19 @@ const StudentResultsTable = ({ studentResult }) => {
     (Number(studentResult["SECTION - B"]) ?? 0) +
     (Number(studentResult["SECTION - C"]) ?? 0) +
     (Number(studentResult["SECTION - D"]) ?? 0) +
-    (Number(studentResult["SECTION - E"]) ?? 0);
+    (Number(studentResult["SECTION - E"]) ?? 0) +
+    (Number(studentResult["ARTICLE"]) ?? 0);
 
   return (
     <>
       <div className="result-page">
         <div className="result-container" ref={pdfRef}>
-          <h1>Dr. Kalam Coaching Classes</h1>
-          <h2>Scholarship Result</h2>
+          <h1>Dr. KALAM COACHING CLASSES, CHHOTI SADRI</h1>
+          <h2>KALAM SCHOLARSHIP TEST 2024 [SESSION – 2nd]</h2>
+          <h2>RESULT</h2>
+          <br/>
+
+
           <table>
             <tbody>
               <tr>
@@ -89,7 +94,7 @@ const StudentResultsTable = ({ studentResult }) => {
               </tr>
             </tbody>
           </table>
-          <div>
+          <div className="marksContainer">
             <table>
               <thead>
                 <tr>
@@ -101,49 +106,58 @@ const StudentResultsTable = ({ studentResult }) => {
               <tbody>
                 <tr>
                   <td>SECTION - A</td>
-                  <td>{50}</td>
+                  <td>{20}</td>
                   <td>{studentResult["SECTION - A"] ?? 0}</td>
                 </tr>
 
                 <tr>
                   <td>SECTION - B</td>
-                  <td>{50}</td>
+                  <td>{20}</td>
                   <td>{studentResult["SECTION - B"] ?? 0}</td>
                 </tr>
 
                 <tr>
                   <td>SECTION - C</td>
-                  <td>{50}</td>
+                  <td>{20}</td>
                   <td>{studentResult["SECTION - C"] ?? 0}</td>
                 </tr>
 
                 <tr>
                   <td>SECTION - D</td>
-                  <td>{50}</td>
+                  <td>{20}</td>
                   <td>{studentResult["SECTION - D"] ?? 0}</td>
                 </tr>
 
                 <tr>
                   <td>SECTION - E</td>
-                  <td>{50}</td>
+                  <td>{20}</td>
                   <td>{studentResult["SECTION - E"] ?? 0}</td>
+                </tr>
+
+                <tr>
+                  <td>Article</td>
+                  <td>{20}</td>
+                  <td>{studentResult["ARTICLE"] ?? 0}</td>
                 </tr>
 
                 <tr>
                   <td>
                     <strong>Total Marks:</strong>
                   </td>
-                  <td>{250}</td>
+                  <td>{110}</td>
                   <td>{totalMarks ? totalMarks : 0}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Rank:</strong>
-                  </td>
-                  <td colSpan="2">-</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div className="rankContainer">
+            <span>RANK</span>
+            <span>{studentResult["RANK"] ?? "NA"}</span>
+          </div>
+          {studentResult?.OFFER && <div>{studentResult["OFFER"] ?? "NA"}</div>}
+          <div className="ctaContainer">
+            1 मई 2024 से कक्षा 10वीं एवं 12वीं के बैच शुरू कर दिए जायंगे |<br/>
+            जल्द से जल्द अपना प्रवेश सुत्तनत्तित करे | 
           </div>
         </div>
         <div className="download-link">
