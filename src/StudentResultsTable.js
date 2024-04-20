@@ -57,8 +57,7 @@ const StudentResultsTable = ({ studentResult }) => {
           <h1>Dr. KALAM COACHING CLASSES, CHHOTI SADRI</h1>
           <h2>KALAM SCHOLARSHIP TEST 2024 [SESSION – 2nd]</h2>
           <h2>RESULT</h2>
-          <br/>
-
+          <br />
 
           <table>
             <tbody>
@@ -136,7 +135,7 @@ const StudentResultsTable = ({ studentResult }) => {
 
                 <tr>
                   <td>Article</td>
-                  <td>{20}</td>
+                  <td>{10}</td>
                   <td>{studentResult["ARTICLE"] ?? 0}</td>
                 </tr>
 
@@ -154,10 +153,10 @@ const StudentResultsTable = ({ studentResult }) => {
             <span>RANK</span>
             <span>{studentResult["RANK"] ?? "NA"}</span>
           </div>
-          {studentResult?.OFFER && <div>{studentResult["OFFER"] ?? "NA"}</div>}
+          {studentResult?.["OFFER "] && <div className="offerContainer"><strong>You Win !!!</strong>{studentResult["OFFER "] ?? "NA"}<strong>!!!</strong></div>}
           <div className="ctaContainer">
-            1 मई 2024 से कक्षा 10वीं एवं 12वीं के बैच शुरू कर दिए जायंगे |<br/>
-            जल्द से जल्द अपना प्रवेश सूनिश्चित करे | 
+            1 मई 2024 से कक्षा 10वीं एवं 12वीं के बैच शुरू कर दिए जायंगे |<br />
+            जल्द से जल्द अपना प्रवेश सूनिश्चित करे |
           </div>
         </div>
         <div className="download-link">
