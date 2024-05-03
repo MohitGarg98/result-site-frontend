@@ -53,9 +53,9 @@ const StudentResultsTable = ({ studentResult }) => {
   return (
     <>
       <div className="result-page">
-        <div className="result-container" ref={pdfRef}>
-          <h3>Dr. KALAM COACHING CLASSES, CHHOTI SADRI</h3>
-          <h4>KALAM SCHOLARSHIP TEST 2024 [SESSION – 2nd]</h4>
+        <div className="result-container"  ref={pdfRef}>
+          <h3 style={{ textAlign: 'center'}}>Dr. KALAM COACHING CLASSES, CHHOTI SADRI</h3>
+          <h4 style={{ textAlign: 'center'}}>KALAM SCHOLARSHIP TEST 2024 [SESSION – 2nd]</h4>
           <h1>RESULT</h1>
           <br />
 
@@ -104,47 +104,47 @@ const StudentResultsTable = ({ studentResult }) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>SECTION - A</td>
-                  <td>{20}</td>
-                  <td>{studentResult["SECTION - A"] ?? 0}</td>
+                  <td><strong>SECTION - A</strong></td>
+                  <td><strong>{20}</strong></td>
+                  <td><strong>{studentResult["SECTION - A"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>SECTION - B</td>
-                  <td>{20}</td>
-                  <td>{studentResult["SECTION - B"] ?? 0}</td>
+                  <td><strong>SECTION - B</strong></td>
+                  <td><strong>{20}</strong></td>
+                  <td><strong>{studentResult["SECTION - B"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>SECTION - C</td>
-                  <td>{20}</td>
-                  <td>{studentResult["SECTION - C"] ?? 0}</td>
+                  <td><strong>SECTION - C</strong></td>
+                  <td><strong>{20}</strong></td>
+                  <td><strong>{studentResult["SECTION - C"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>SECTION - D</td>
-                  <td>{20}</td>
-                  <td>{studentResult["SECTION - D"] ?? 0}</td>
+                  <td><strong>SECTION - D</strong></td>
+                  <td><strong>{20}</strong></td>
+                  <td><strong>{studentResult["SECTION - D"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>SECTION - E</td>
-                  <td>{20}</td>
-                  <td>{studentResult["SECTION - E"] ?? 0}</td>
+                  <td><strong>SECTION - E</strong></td>
+                  <td><strong>{20}</strong></td>
+                  <td><strong>{studentResult["SECTION - E"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>Article</td>
-                  <td>{10}</td>
-                  <td>{studentResult["ARTICLE"] ?? 0}</td>
+                  <td><strong>Article</strong></td>
+                  <td><strong>{10}</strong></td>
+                  <td><strong>{studentResult["ARTICLE"] ?? 0}</strong></td>
                 </tr>
 
                 <tr>
-                  <td>
-                    <strong>Total Marks:</strong>
+                  <td><strong>
+                    Total Marks:</strong>
                   </td>
-                  <td>{110}</td>
-                  <td>{totalMarks ? totalMarks : 0}</td>
+                  <td><strong>{110}</strong></td>
+                  <td><strong>{totalMarks ? totalMarks : 0}</strong></td>
                 </tr>
               </tbody>
             </table>
